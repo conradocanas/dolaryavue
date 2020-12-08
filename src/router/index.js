@@ -9,11 +9,6 @@ Vue.use(VueRouter)
     path: '/',
     name: 'Home',
     component: Home
-  },
-  {
-    path: '/candlesticksgraphic',
-    name: 'Candlesticks graphic',
-    component: () => import('../views/CandlesticksView.vue')
   }
 ]
 

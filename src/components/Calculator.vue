@@ -1,53 +1,110 @@
 <template>
-  <div class="row main-container mx-auto">
-    <v-container fluid>
-      <v-row align="center">
-        <v-col class="d-flex" cols="12" sm="6">
-          <h2>BTC Converter</h2>
+  <v-card height="380px">
+    <v-card-title
+      v-if="calculatedItem.name != ''"
+      class="justify-center text-uppercase secondaryBack py-2"
+    >
+      Calculando {{ calculatedItem.name }}</v-card-title
+    >
+    <v-card-title
+      v-else
+      class="justify-center text-uppercase secondaryBack py-2"
+    >
+      Calculadora de monedas</v-card-title
+    >
+    <v-card-text v-if="calculatedItem.name != ''">
+      <v-row>
+        <v-col cols="4" class="text-center">
+          <h4>Compra</h4>
+          <h4 class="currencyValue">$ {{ calculatedItem.buy }}</h4>
         </v-col>
-        <v-col class="d-flex" cols="12" sm="6">
-          <v-select
-            @change="updateInputs"
-            v-model="selected"
-            label="Pick a currency"
-            :items="APIkeys"
-          >
-          </v-select>
+        <v-col cols="4" class="text-center">
+          <h4>Promedio</h4>
+          <h4 class="currencyValue">
+            $
+            {{
+              (parseFloat(calculatedItem.buy) +
+                parseFloat(calculatedItem.sell)) /
+                2
+            }}
+          </h4>
+        </v-col>
+        <v-col cols="4" class="text-center">
+          <h4>Venta</h4>
+          <h4 class="currencyValue">$ {{ calculatedItem.sell }}</h4>
         </v-col>
       </v-row>
-    </v-container>
-
-    <div class="row">
-      <!-- input field 1 -->
-      <div class="col">
-        <h2 class="country-name">BTC</h2>
-        <p class="rate">Rate: 1 BTC</p>
-        <input
-          id="currencyInput"
-          class="currency-input"
-          @keyup="calcInput_1"
-          :value="calc2"
-        />
+      <v-divider class="mb-2"></v-divider>
+      <v-row>
+        <v-col cols="12" class="text-center ma-0"
+          >Seleccioná el tipo de transacción:</v-col
+        >
+        <v-col cols="12" class="d-flex justify-center pt-0">
+          <v-btn
+            small
+            class="primary mr-2"
+            @click="
+              selectCurrency(
+                calculatedItem.name,
+                calculatedItem.buy,
+                calculatedItem.sell,
+                'buy'
+              )
+            "
+            >Compra</v-btn
+          >
+          <v-btn
+            small
+            class="primary mr-2"
+            @click="
+              selectCurrency(
+                calculatedItem.name,
+                calculatedItem.buy,
+                calculatedItem.sell,
+                'average'
+              )
+            "
+            >Promedio</v-btn
+          >
+          <v-btn
+            small
+            class="primary"
+            @click="
+              selectCurrency(
+                calculatedItem.name,
+                calculatedItem.buy,
+                calculatedItem.sell,
+                'sell'
+              )
+            "
+            >Venta</v-btn
+          >
+        </v-col>
+      </v-row>
+      <div class="pa-4">
+        <v-text-field
+          dense
+          label="Dolares (USD)"
+          outlined
+          v-model="selectedUsdCurrency"
+        ></v-text-field>
+        <v-text-field
+          dense
+          label="Pesos Argentinos (ARS)"
+          outlined
+          v-model="selectedArsCurrency"
+        ></v-text-field>
       </div>
-      <!-- input field 2 -->
-      <div class="col">
-        <template v-for="APIvalue in APIvalues">
-          <template v-if="selected === APIvalue.name">
-            <h2 class="country-name" :key="APIvalue.name">
-              {{ APIvalue.name }}
-            </h2>
-            <p class="rate" :key="APIvalue.sell">Rate: {{ APIvalue.sell }}</p>
-            <input
-              class="currency-input"
-              @keyup="calcInput_2"
-              :value="calc1"
-              v-bind:key="APIvalue.buy - 2"
-            />
-          </template>
-        </template>
-      </div>
-    </div>
-  </div>
+    </v-card-text>
+    <v-card-text
+      class="d-flex align-center text-center"
+      style="height: 100%;"
+      v-else
+    >
+      Usa el boton "Calcular" en la tarjeta de cada moneda para calcular los
+      valores que necesites.
+    </v-card-text>
+  </v-card>
 </template>
 
 <script>
@@ -56,14 +113,15 @@ export default {
   name: "calculatorComponent",
   data() {
     return {
-      APIkeys: [],
-      APIvalues: [],
-      selected: "Pick",
-      countryRate: 0,
-      calc1: "",
-      calc2: "",
-      firstInputSelected: true,
-      input: document.getElementById("currencyInput"),
+      calculatedItem: {
+        name: "",
+        buy: 0,
+        sell: 0,
+        average: 0
+      },
+      selectedArsCurrency: 1,
+      selectedUsdCurrency: 1,
+      selectedTransaction: "sell"
     };
   },
   mounted: function() {

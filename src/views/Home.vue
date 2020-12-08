@@ -1,29 +1,54 @@
 <template>
   <v-container>
-    <DashBoard></DashBoard>
+    <v-row>
+      <v-col v-show="showCryptoDashboard">
+        <DashBoard />
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col>
+        <DolarCards />
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col v-show="showCurrencyChart" cols="7">
+        <CurrencyChart />
+      </v-col>
+      <v-col v-show="showCalculator" cols="5">
+        <Calculator />
+      </v-col>
+    </v-row>
   </v-container>
 </template>
 
 <script>
-import DashBoard from "./Dashboard"
+import DolarCards from "@/components/DolarCards.vue";
+import CurrencyChart from "@/components/CurrencyChart.vue";
+import Calculator from "../components/Calculator.vue";
+import DashBoard from "./Dashboard";
 
 // @ is an alias to /src
 export default {
   name: "Home",
   components: {
-    DashBoard
+    DashBoard,
+    Calculator,
+    CurrencyChart,
+    DolarCards,
   },
   data() {
     return {
-      series: [],
-    }
+      showCalculator: true,
+      showCurrencyChart: true,
+      showCryptoDashboard: true,
+    };
   },
   mounted() {
     fetch("http://164.90.149.113:3200/api/dolares/grafico/oficial/7")
-    .then(response => response.json())
-    .then(data => {
-      console.log(data)
-    });
-  }
-}
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+      });
+  },
+};
 </script>
