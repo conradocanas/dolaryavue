@@ -28,13 +28,13 @@ export default class Api {
       }
       ws = new WS(path, {
         timeout: this.timeout,
-        maxAttempts: this.maxAttempts,
-        onopen: e => console.log('Connected!', e),
+        maxAttempts: this.maxAttempts,/* 
+        onopen: e => console.log('Connected!', e), */
         onmessage: e => cb(JSON.parse(e.data)),
-        onreconnect: e => console.log('Reconnecting...', e),
+/*         onreconnect: e => console.log('Reconnecting...', e),
         onmaximum: e => console.log('Stop Attempting!', e),
         onclose: e => { console.log('Closed!', e);  this.removeSubscription(e.endpoint)},
-        onerror: e => console.log('Error:', e)
+        onerror: e => console.log('Error:', e) */
       });
       this.subscription[path] = ws
     }

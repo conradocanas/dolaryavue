@@ -1,9 +1,8 @@
 <template>
   <v-card>
     <apexchart
-      :width="chartWidth"
-      :height="chartHeight"
-      type="area"
+      width="500"
+      type="line"
       :options="chartOptions"
       :series="series"
     ></apexchart>
@@ -11,54 +10,36 @@
 </template>
 
 <script>
-import Vue from "vue"
-import VueApexCharts from 'vue-apexcharts'
+import Vue from "vue";
+import VueApexCharts from "vue-apexcharts";
 
-Vue.use(VueApexCharts)
-Vue.component('apexchart', VueApexCharts)
+Vue.use(VueApexCharts);
+Vue.component("apexchart", VueApexCharts);
 
 export default {
-  data() {
+  data: function() {
     return {
-      // Line Chart Variables
-      chartWidth: 500,
-      chartHeight: 300,
       chartOptions: {
         chart: {
-          id: "vuechart-example",
-          type: "line",
+          id: "Histórico",
+        },
+        title: {
+          text: 'Historico Dolar Oficial',
+          align: 'left'
         },
         xaxis: {
-          type: "datetime",
-          labels: {
-            datetimeFormatter: {
-              year: "yyyy",
-              month: "MMM 'yy",
-              day: "dd MMM",
-              hour: "HH:mm",
-            },
-          },
+          categories: [],
         },
-        tooltip: {
-          theme: "dark",
-        },
-        dataLabels: {
-          enabled: false,
-        },
-        colors: ["#267920", "#1F3F78", "#792050"],
-        fill: {
-          type: "gradient",
-          gradient: {
-            type: "vertical",
-            shadeIntensity: 0.5,
-            opacityFrom: 0.4,
-            opacityTo: 0.1,
-            stops: [0, 50, 100],
-            colorStops: [],
-          },
-        },
+        
       },
+      series: [],
     };
+  },
+  mounted() {
+    // "oficial tiene que ser dinámico"
+     fetch("http://164.90.149.113:3200/api/dolares/grafico/blue/7")
+      .then((res) => res.json())
+      .then((data) => this.series = [{name: "Dolar Oficial", data: data}])
   },
 };
 </script>

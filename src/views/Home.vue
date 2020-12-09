@@ -46,9 +46,6 @@ export default {
   mounted() {
     fetch("http://164.90.149.113:3200/api/dolares/grafico/oficial/7")
       .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-      });
   },
 };
 </script>

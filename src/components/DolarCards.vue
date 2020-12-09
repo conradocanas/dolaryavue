@@ -253,7 +253,6 @@ export default {
       .then((response) => response.json())
       .then((data) => {
         this.currencies = data;
-        console.log(data);
       });
   },
   computed: mapState([
@@ -265,6 +264,9 @@ export default {
     "dolarSoja",
     "dolarBitcoin",
   ]),
+  methods: {
+
+  }
 };
 </script>
 
