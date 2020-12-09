@@ -33,6 +33,13 @@ export default new Vuex.Store({
     },
   },
   mutations: {
+    SET_SELECTED_ITEM: (state, payload) => {
+      console.log(payload)
+      state.calculatedItem.name = payload.nombre
+      state.calculatedItem.buy = payload.compra
+      state.calculatedItem.sell = payload.venta
+      state.calculatedItem.transaction = payload.transaction
+    },
     UPDATE_TICKER: (state, payload) => {
       const tick = state.tickers[payload.symbol];
       payload.pchg = tick ? (payload.price > tick.price ? 1 : -1) : 1;

@@ -83,9 +83,7 @@
               color="primary"
               @click="
                 selectCurrency(
-                  currencies[1].casa.nombre,
-                  currencies[1].casa.compra,
-                  currencies[1].casa.venta
+                  currencies[1].casa
                 )
               "
               >Calcular</v-btn
@@ -266,9 +264,9 @@ export default {
     "calculatedItem"
   ]),
   methods: {
-    selectCurrency(name, buy, sell, transaction) {
-      this.$store.commit("selectedCurrency", name)
-      console.log(name, buy, sell)
+    selectCurrency(item) {
+      this.$store.commit("SET_SELECTED_ITEM", item)
+/*       console.log(name, buy, sell)
       this.calculatedItem.name = name;
       this.calculatedItem.buy = buy;
       this.calculatedItem.sell = sell;
@@ -279,11 +277,8 @@ export default {
         this.selectedArsCurrency = buy;
       } else {
         this.selectedArsCurrency = average;
-      }
+      } */
     },
-    setSelectedCurrency(){
-      this.$emit('calculatedItem', this.calculatedItem)
-    }
   },
 };
 </script>
