@@ -17,6 +17,12 @@ export default new Vuex.Store({
     dolarBitcoin: true,
     dolarSoja: false,
     dolarLiqui: false,
+    calculatedItem: {
+      name: "Hola",
+      buy: 0,
+      sell: 0,
+      average: 0
+    },
   },
   getters: {
     getSymbolById: (state) => (symbol) => {

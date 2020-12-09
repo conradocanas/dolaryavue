@@ -263,10 +263,28 @@ export default {
     "dolarLiqui",
     "dolarSoja",
     "dolarBitcoin",
+    "calculatedItem"
   ]),
   methods: {
-
-  }
+    selectCurrency(name, buy, sell, transaction) {
+      this.$store.commit("selectedCurrency", name)
+      console.log(name, buy, sell)
+      this.calculatedItem.name = name;
+      this.calculatedItem.buy = buy;
+      this.calculatedItem.sell = sell;
+      let average = (parseFloat(buy) + parseFloat(sell)) / 2;
+      if (transaction == "sell") {
+        this.selectedArsCurrency = sell;
+      } else if (transaction == "buy") {
+        this.selectedArsCurrency = buy;
+      } else {
+        this.selectedArsCurrency = average;
+      }
+    },
+    setSelectedCurrency(){
+      this.$emit('calculatedItem', this.calculatedItem)
+    }
+  },
 };
 </script>
 

@@ -108,17 +108,12 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 import axios from "axios";
 export default {
   name: "calculatorComponent",
   data() {
     return {
-      calculatedItem: {
-        name: "",
-        buy: 0,
-        sell: 0,
-        average: 0
-      },
       selectedArsCurrency: 1,
       selectedUsdCurrency: 1,
       selectedTransaction: "sell"
@@ -184,5 +179,8 @@ export default {
       }
     },
   },
+    computed: mapState([
+    "calculatedItem"
+  ]),
 };
 </script>

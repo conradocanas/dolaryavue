@@ -15,7 +15,7 @@
         <CurrencyChart />
       </v-col>
       <v-col v-show="showCalculator" cols="5">
-        <Calculator />
+        <Calculator :calculatedItem="calculatedItem" />
       </v-col>
     </v-row>
   </v-container>
@@ -41,6 +41,12 @@ export default {
       showCalculator: true,
       showCurrencyChart: true,
       showCryptoDashboard: true,
+      calculatedItem: {
+        name: "",
+        buy: 0,
+        sell: 0,
+        average: 0
+      },
     };
   },
   mounted() {
