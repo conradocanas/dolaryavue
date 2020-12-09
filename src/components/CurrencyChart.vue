@@ -11,7 +11,9 @@
 
 <script>
 import Vue from "vue";
+/* import { mapState } from "vuex"; */
 import VueApexCharts from "vue-apexcharts";
+import { mapState } from 'vuex';
 
 Vue.use(VueApexCharts);
 Vue.component("apexchart", VueApexCharts);
@@ -33,13 +35,25 @@ export default {
         
       },
       series: [],
+      tipoMoneda: 'oficial'
     };
   },
   mounted() {
-    // "oficial tiene que ser dinámico"
-     fetch("http://164.90.149.113:3200/api/dolares/grafico/blue/7")
-      .then((res) => res.json())
-      .then((data) => this.series = [{name: "Dolar Oficial", data: data}])
+   console.log(this.$store.state.calculatedItem.name)
+   this.fetchData(this.$store.state.calculatedItem.name)
+  },
+  methods: {
+    fetchData(tipoMoneda){
+      let moneda = tipoMoneda.replace("Dolar ", "").toLowerCase()
+      fetch(`http://164.90.149.113:3200/api/dolares/grafico/${moneda}/7`)
+        .then((res) => res.json())
+        .then((data) => this.series = [{name: "Dolar Oficial", data: data}])
+    },
+  },
+  computed: {
+    ...mapState([
+      "calculatedItem"
+    ])
   },
 };
 </script>

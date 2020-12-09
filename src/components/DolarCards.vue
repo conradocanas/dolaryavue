@@ -41,9 +41,7 @@
               color="primary"
               @click="
                 selectCurrency(
-                  currencies[0].casa.nombre,
-                  currencies[0].casa.compra,
-                  currencies[0].casa.venta
+                  currencies[0].casa
                 )
               "
               >Calcular</v-btn
@@ -153,9 +151,7 @@
               color="primary"
               @click="
                 selectCurrency(
-                  currencies[4].casa.nombre,
-                  currencies[4].casa.compra,
-                  currencies[4].casa.venta
+                  currencies[4].casa
                 )
               "
               >Calcular</v-btn

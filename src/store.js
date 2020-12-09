@@ -18,7 +18,7 @@ export default new Vuex.Store({
     dolarSoja: false,
     dolarLiqui: false,
     calculatedItem: {
-      name: "Hola",
+      name: "oficial",
       buy: 0,
       sell: 0,
       average: 0
