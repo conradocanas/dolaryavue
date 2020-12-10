@@ -43,40 +43,20 @@
           <v-btn
             small
             class="primary mr-2"
-            @click="
-              selectCurrency(
-                calculatedItem.name,
-                calculatedItem.buy,
-                calculatedItem.sell,
-                'buy'
-              )
-            "
+            @click="total('compra')"
             >Compra</v-btn
           >
           <v-btn
             small
+            v-model="promedio"
             class="primary mr-2"
-            @click="
-              selectCurrency(
-                calculatedItem.name,
-                calculatedItem.buy,
-                calculatedItem.sell,
-                'average'
-              )
-            "
+            @click="total('promedio')"
             >Promedio</v-btn
           >
           <v-btn
             small
             class="primary"
-            @click="
-              selectCurrency(
-                calculatedItem.name,
-                calculatedItem.buy,
-                calculatedItem.sell,
-                'sell'
-              )
-            "
+            @click="total('venta')"
             >Venta</v-btn
           >
         </v-col>
@@ -92,7 +72,7 @@
           dense
           label="Pesos Argentinos (ARS)"
           outlined
-          v-model="selectedArsCurrency"
+          v-model="calculatorValue"
         ></v-text-field>
       </div>
     </v-card-text>
@@ -116,7 +96,9 @@ export default {
     return {
       selectedArsCurrency: 1,
       selectedUsdCurrency: 1,
-      selectedTransaction: "sell"
+      selectedTransaction: "sell",
+      calculatorValue: 0,
+      promedio: 1
     };
   },
   mounted: function() {
@@ -178,6 +160,21 @@ export default {
         this.calc2 = (value / this.countryRate).toFixed(5);
       }
     },
+    total: function(transactType) {
+      if(transactType == 'promedio') {
+        let average = (this.$store.state.calculatedItem.compra+this.$store.state.calculatedItem.venta)/2;
+        this.calculatorValue = this.selectedUsdCurrency * average;
+        return console.log(this.$store.state.calculatedItem.venta)
+      }
+      if(transactType == 'compra') {
+        this.calculatorValue = this.selectedUsdCurrency * this.$store.state.calculatedItem.compra;
+        return console.log(this.calculatorValue)
+      }
+      if(transactType == 'venta') {
+        this.calculatorValue = this.selectedUsdCurrency * this.$store.state.calculatedItem.venta;
+        return console.log(this.calculatorValue)
+      }
+    }
   },
     computed: mapState([
     "calculatedItem"
