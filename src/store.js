@@ -43,17 +43,16 @@ export default new Vuex.Store({
           return res.json();
         })
         .then((response) => {
-          const graphData = response
-          console.log(graphData)
+          let graphData = response
           state.commit("SET_GRAPH_DATA", graphData)
         });
     },
   },
   mutations: {
     SET_GRAPH_DATA: (state, payload) => {
-      state.chartData.name = "Dolar Oficial"
+      state.chartData.name = state.calculatedItem.name
       state.chartData.data = payload
-      console.log("Estado chart: ", state.chartData)
+      console.log(state.chartData)
     },
     SET_SELECTED_ITEM: (state, payload) => {
       state.calculatedItem.name = payload.nombre

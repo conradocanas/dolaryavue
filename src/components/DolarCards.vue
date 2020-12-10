@@ -1,5 +1,5 @@
 <template>
-  <v-row class="d-flex justify-center">
+  <v-row v-if="currencies" class="d-flex justify-center">
     <transition name="slide-fade">
       <v-col
         v-show="dolarOficial"
@@ -261,7 +261,17 @@ export default {
   ]),
   methods: {
     selectCurrency(item) {
-      this.$store.commit("SET_SELECTED_ITEM", item)
+      fetch(
+        `http://164.90.149.113:3200/api/dolares/grafico/${item.nombre.replace("Dolar ", "").toLowerCase()}/7`
+      )
+        .then((res) => {
+          return res.json();
+        })
+        .then((response) => {
+          let graphData = response
+          this.$store.commit("SET_SELECTED_ITEM", item)
+          this.$store.commit("SET_GRAPH_DATA", graphData)
+        });
 /*       console.log(name, buy, sell)
       this.calculatedItem.name = name;
       this.calculatedItem.buy = buy;

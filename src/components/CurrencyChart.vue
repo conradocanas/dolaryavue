@@ -4,14 +4,14 @@
       width="500"
       type="line"
       :options="chartOptions"
-      :series="series"
+      :series="[$store.state.chartData]"
+      :key="$store.state.chartData.name"
     ></apexchart>
   </v-card>
 </template>
 
 <script>
 import Vue from "vue";
-/* import { mapState } from "vuex"; */
 import VueApexCharts from "vue-apexcharts";
 import { mapState } from 'vuex';
 
@@ -35,26 +35,21 @@ export default {
         
       },
       series: [],
-      tipoMoneda: 'oficial'
     };
   },
   mounted() {
-   console.log(this.$store.state.calculatedItem.name)
-   this.fetchData(this.$store.state.calculatedItem.name)
+/*    this.fetchData(this.$store.state.calculatedItem.name.replace("Dolar ", "").toLowerCase()) */
   },
   methods: {
-    fetchData(tipoMoneda){
-      let moneda = tipoMoneda.replace("Dolar ", "").toLowerCase()
-      fetch(`http://164.90.149.113:3200/api/dolares/grafico/${moneda}/7`)
+/*     fetchData(){
+      fetch(`http://164.90.149.113:3200/api/dolares/grafico/${this.$store.state.calculatedItem.name.replace("Dolar ", "").toLowerCase()}/7`)
         .then((res) => res.json())
-        .then((data) => this.series = [{name: "Dolar Oficial", data: data}])
-    },
+        .then((data) => this.$store.commit("SET_GRAPH_DATA", data))
+    }, */
   },
-  computed: {
-    ...mapState([
-      "calculatedItem"
-    ])
-  },
+  computed: mapState([
+    "chartData"
+  ]),
 };
 </script>
 
