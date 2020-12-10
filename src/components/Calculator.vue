@@ -57,7 +57,7 @@
             small
             v-model="promedio"
             class="primary mr-2"
-            @click="result({{selectedUsdCurrency}}, "TIPO BOTON")"
+            @click="result(inputUsdValue, value)"
             >Promedio</v-btn
           >
           <v-btn
@@ -173,17 +173,18 @@ export default {
       }
     },
     result: function(inputUsdValue, transactType) {
+      let input = inputUsdValue.target.value;
       if(transactType == 'promedio') {
         let average = (this.$store.state.calculatedItem.compra+this.$store.state.calculatedItem.venta)/2;
-        return inputUsdValue * average;
+        return input * average;
       }
       if(transactType == 'compra') {
         let purchase = this.$store.state.calculatedItem.compra;
-        return inputUsdValue * purchase;
+        return input * purchase;
       }
       if(transactType == 'venta') {
         let sale = this.$store.state.calculatedItem.venta;
-        return inputUsdValue * sale;
+        return input * sale;
       }
     }
   },
