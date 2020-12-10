@@ -55,15 +55,9 @@
           >
           <v-btn
             small
+            v-model="promedio"
             class="primary mr-2"
-            @click="
-              selectCurrency(
-                calculatedItem.name,
-                calculatedItem.buy,
-                calculatedItem.sell,
-                'average'
-              )
-            "
+            @click="result({{selectedUsdCurrency}}, "TIPO BOTON")"
             >Promedio</v-btn
           >
           <v-btn
@@ -92,7 +86,7 @@
           dense
           label="Pesos Argentinos (ARS)"
           outlined
-          v-model="selectedArsCurrency"
+          
         ></v-text-field>
       </div>
     </v-card-text>
@@ -178,6 +172,20 @@ export default {
         this.calc2 = (value / this.countryRate).toFixed(5);
       }
     },
+    result: function(inputUsdValue, transactType) {
+      if(transactType == 'promedio') {
+        let average = (this.$store.state.calculatedItem.compra+this.$store.state.calculatedItem.venta)/2;
+        return inputUsdValue * average;
+      }
+      if(transactType == 'compra') {
+        let purchase = this.$store.state.calculatedItem.compra;
+        return inputUsdValue * purchase;
+      }
+      if(transactType == 'venta') {
+        let sale = this.$store.state.calculatedItem.venta;
+        return inputUsdValue * sale;
+      }
+    }
   },
     computed: mapState([
     "calculatedItem"

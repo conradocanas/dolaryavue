@@ -39,15 +39,15 @@ export default {
     };
   },
   mounted() {
-   console.log(this.$store.state.calculatedItem.name)
    this.fetchData(this.$store.state.calculatedItem.name)
   },
   methods: {
     fetchData(tipoMoneda){
-      let moneda = tipoMoneda.replace("Dolar ", "").toLowerCase()
+      let moneda = tipoMoneda.replace("Dolar ", "").toLowerCase();
       fetch(`http://164.90.149.113:3200/api/dolares/grafico/${moneda}/7`)
         .then((res) => res.json())
         .then((data) => this.series = [{name: "Dolar Oficial", data: data}])
+        .then(console.log`http://164.90.149.113:3200/api/dolares/grafico/${{moneda}}/7`)
     },
   },
   computed: {
