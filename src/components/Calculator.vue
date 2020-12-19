@@ -40,40 +40,34 @@
           >Seleccioná el tipo de transacción:</v-col
         >
         <v-col cols="12" class="d-flex justify-center pt-0">
-            <v-btn
-              small
-              class="primary mr-2"
-              @click="activeCurrencies = 'compra'"
-              >Compra</v-btn
-            >
-            <v-btn
-              small
-              class="primary mr-2"
-               @click="activeCurrencies = 'promedio'"
-              >Promedio</v-btn
-            >
-            <v-btn
-              small
-              class="primary"
-              @click="activeCurrencies = 'venta'"
-              >Venta</v-btn
-            >
+          <v-btn small class="primary mr-2" @click="activeCurrencies = 'compra'"
+            >Compra</v-btn
+          >
+          <v-btn
+            small
+            class="primary mr-2"
+            @click="activeCurrencies = 'promedio'"
+            >Promedio</v-btn
+          >
+          <v-btn small class="primary" @click="activeCurrencies = 'venta'"
+            >Venta</v-btn
+          >
         </v-col>
       </v-row>
       <div class="pa-4">
-        <v-text-field
-          dense
-          label="Dolares (USD)"
-          outlined
-          @keyup="totalArs(activeCurrencies)"
-          v-model="selectedUsdCurrency"
-        ></v-text-field>
         <v-text-field
           dense
           label="Pesos Argentinos (ARS)"
           @keyup="totalUsd(activeCurrencies)"
           outlined
           v-model="selectedArsCurrency"
+        ></v-text-field>
+        <v-text-field
+          dense
+          label="Dolares (USD)"
+          outlined
+          @keyup="totalArs(activeCurrencies)"
+          v-model="selectedUsdCurrency"
         ></v-text-field>
       </div>
     </v-card-text>
@@ -100,7 +94,7 @@ export default {
       selectedTransaction: "sell",
       promedio: 1,
       firstInputSelected: true,
-      activeCurrencies: '',
+      activeCurrencies: "",
     };
   },
   mounted: function() {
