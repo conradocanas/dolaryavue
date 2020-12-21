@@ -37,8 +37,8 @@
             <v-spacer></v-spacer>
             <v-btn
               x-small
-              class="elevation-1"
-              color="primary"
+              class="elevation-1 font-weight-bold"
+              color="background"
               @click="
                 $emit(selectCurrency(),
                   currencies[0].casa
@@ -77,8 +77,8 @@
             <v-spacer></v-spacer>
             <v-btn
               x-small
-              class="elevation-1"
-              color="primary"
+              class="elevation-1 font-weight-bold"
+              color="background"
               @click="
                 selectCurrency(
                   currencies[1].casa
@@ -147,8 +147,8 @@
             <v-spacer></v-spacer>
             <v-btn
               x-small
-              class="elevation-1"
-              color="primary"
+              class="elevation-1 font-weight-bold"
+              color="background"
               @click="
                 selectCurrency(
                   currencies[4].casa

@@ -42,20 +42,20 @@
         <v-col cols="12" class="d-flex justify-center pt-0">
           <v-btn
             small
-            class="primary mr-2"
+            class="background mr-2"
             @click="total('compra')"
             >Compra</v-btn
           >
           <v-btn
             small
             v-model="promedio"
-            class="primary mr-2"
+            class="background mr-2"
             @click="total('promedio')"
             >Promedio</v-btn
           >
           <v-btn
             small
-            class="primary"
+            class="background"
             @click="total('venta')"
             >Venta</v-btn
           >
@@ -98,7 +98,7 @@ export default {
       selectedUsdCurrency: 1,
       selectedTransaction: "sell",
       calculatorValue: 0,
-      promedio: 1
+      promedio: 0,
     };
   },
   mounted: function() {
