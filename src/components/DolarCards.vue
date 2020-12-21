@@ -13,7 +13,7 @@
       >
         <v-card>
           <v-card-title
-            class="justify-center text-uppercase secondaryBack py-2"
+            class="justify-center secondaryBack py-2 currency-name"
           >
             <v-icon size="30" class="mr-2" color="green">mdi-cash</v-icon>
             {{ currencies[0].casa.nombre }}</v-card-title
@@ -54,7 +54,7 @@
     <transition name="slide-fade">
       <v-col v-show="dolarBlue" cols="12" lg="3" md="3" sm="6">
         <v-card>
-          <v-card-title class="justify-center text-uppercase secondaryBack py-2">
+          <v-card-title class="justify-center secondaryBack py-2 currency-name">
             <v-icon size="30" class="mr-2" color="blue">mdi-cash</v-icon>
             {{ currencies[1].casa.nombre }}</v-card-title
           >
@@ -94,7 +94,7 @@
     <transition name="slide-fade">
       <v-col v-show="dolarLiqui" cols="12" lg="3" md="3" sm="6">
         <v-card>
-          <v-card-title class="justify-center text-uppercase secondaryBack py-2">
+          <v-card-title class="justify-center secondaryBack py-2 currency-name">
             <v-icon size="30" class="mr-2" color="purple">mdi-cash</v-icon>
             Dolar Liqui
           </v-card-title>
@@ -124,7 +124,7 @@
     <transition name="slide-fade">
       <v-col v-show="dolarBolsa" cols="12" lg="3" md="3" sm="6">
         <v-card>
-          <v-card-title class="justify-center text-uppercase secondaryBack py-2">
+          <v-card-title class="justify-center secondaryBack py-2 currency-name">
             <v-icon size="30" class="mr-2" color="purple">mdi-cash</v-icon>
             {{ currencies[4].casa.nombre }}</v-card-title
           >
@@ -165,7 +165,7 @@
       <v-col v-show="dolarBitcoin" cols="12" lg="3" md="3" sm="6">
         <v-card>
           <v-card-title
-            class="justify-center text-uppercase secondaryBack py-2"
+            class="justify-center secondaryBack py-2 currency-name"
           >
             <v-icon size="30" class="mr-2" color="yellow">mdi-bitcoin</v-icon>
             {{ currencies[5].casa.nombre }}</v-card-title
@@ -362,6 +362,7 @@ export default {
 .currencyValue {
   padding-top: 0.5rem;
   font-size: 1.2rem;
+  color: var(--v-primaryColor-base)!important;
 }
 .variationFooter {
   text-align: center !important;
@@ -377,5 +378,11 @@ export default {
 /* .slide-fade-leave-active below version 2.1.8 */ {
   transform: translateX(-10px);
   opacity: 0;
+}
+.currency-name {
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <v-card class="secondaryBack">
+  <v-card class="secondaryBack elevation-1">
     <apexchart
       width="500"
       type="line"

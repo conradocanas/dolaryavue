@@ -1,18 +1,18 @@
 <template>
-  <v-card class="secondaryBack" height="300px">
+  <v-card class="secondaryBack elevation-1" height="280px">
     <v-card-title
       v-if="calculatedItem.name != ''"
-      class="justify-center text-uppercase primaryBack py-2"
+      class="justify-center text-uppercase secondaryBack py-2"
     >
       Calculando {{ calculatedItem.name }}</v-card-title
     >
     <v-card-title
       v-else
-      class="justify-center text-uppercase secondaryBack py-2"
+      class="justify-center text-uppercase primaryBack py-2"
     >
       Calculadora de monedas</v-card-title
     >
-    <v-card-text v-if="calculatedItem.name != ''">
+    <v-card-text v-if="calculatedItem.name != ''" class="primaryBack pt-2">
 <!--       <v-row>
         <v-col cols="4" class="text-center">
           <h4>Compra</h4>
@@ -61,7 +61,7 @@
           >
         </v-col>
       </v-row>
-      <div class="pa-4">
+      <div class="pa-4 primaryBack">
         <v-text-field
           dense
           label="Dolares (USD)"
