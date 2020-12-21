@@ -7,12 +7,12 @@
     </v-row>
     <v-row>
       <v-col>
-        <DolarCards />
+        <DolarCards @select-currency="selectCurrency" />
       </v-col>
     </v-row>
     <v-row>
       <v-col v-show="showCurrencyChart" cols="7">
-        <CurrencyChart />
+        <CurrencyChart :key="graphSeries.name" :graphSeries="graphSeries" />
       </v-col>
       <v-col v-show="showCalculator" cols="5">
         <Calculator :calculatedItem="calculatedItem" />
@@ -47,11 +47,29 @@ export default {
         sell: 0,
         average: 0
       },
+      graphSeries: [
+        {
+          data: []
+        },
+      ],
     };
   },
   mounted() {
-    fetch("http://164.90.149.113:3200/api/dolares/grafico/oficial/7")
-      .then((response) => response.json())
+  },
+  methods: {
+    selectCurrency(item) {
+      fetch(
+        `http://164.90.149.113:3200/api/dolares/grafico/${this.$store.state.calculatedItem.name.replace("Dolar ", "").toLowerCase()}/7`
+      )
+        .then((res) => {
+          return res.json();
+        })
+        .then((response) => {
+          this.graphSeries[0].name = this.$store.state.calculatedItem.name
+          this.graphSeries[0].data = response
+          console.log(this.graphSeries, item)
+        });
+    },
   },
 };
 </script>

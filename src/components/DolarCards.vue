@@ -40,7 +40,7 @@
               class="elevation-1"
               color="primary"
               @click="
-                selectCurrency(
+                $emit(selectCurrency(),
                   currencies[0].casa
                 )
               "
@@ -260,7 +260,7 @@ export default {
     "calculatedItem"
   ]),
   methods: {
-    selectCurrency(item) {
+/*     selectCurrency(item) {
       fetch(
         `http://164.90.149.113:3200/api/dolares/grafico/${item.nombre.replace("Dolar ", "").toLowerCase()}/7`
       )
@@ -269,10 +269,9 @@ export default {
         })
         .then((response) => {
           let graphData = response
-          this.$store.commit("SET_SELECTED_ITEM", item)
-          this.$store.commit("SET_GRAPH_DATA", graphData)
+          this.$emit("graphSeries", graphData)
         });
-/*       console.log(name, buy, sell)
+      console.log(name, buy, sell)
       this.calculatedItem.name = name;
       this.calculatedItem.buy = buy;
       this.calculatedItem.sell = sell;
@@ -283,8 +282,8 @@ export default {
         this.selectedArsCurrency = buy;
       } else {
         this.selectedArsCurrency = average;
-      } */
-    },
+      } 
+    },*/
   },
 };
 </script>
