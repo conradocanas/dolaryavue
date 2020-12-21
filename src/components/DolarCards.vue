@@ -13,12 +13,12 @@
       >
         <v-card>
           <v-card-title
-            class="justify-center text-uppercase dolar-oficial py-2"
+            class="justify-center text-uppercase secondaryBack py-2"
           >
-            <v-icon class="mr-2" color="white">mdi-cash</v-icon>
+            <v-icon size="30" class="mr-2" color="green">mdi-cash</v-icon>
             {{ currencies[0].casa.nombre }}</v-card-title
           >
-          <v-card-text class="d-flex align-center pa-2">
+          <v-card-text class="d-flex align-center pa-2 primaryBack">
             <v-row>
               <v-col class="text-center">
                 <h4>Compra</h4>
@@ -54,11 +54,11 @@
     <transition name="slide-fade">
       <v-col v-show="dolarBlue" cols="12" lg="3" md="3" sm="6">
         <v-card>
-          <v-card-title class="justify-center text-uppercase dolar-blue py-2">
-            <v-icon class="mr-2" color="white">mdi-cash</v-icon>
+          <v-card-title class="justify-center text-uppercase secondaryBack py-2">
+            <v-icon size="30" class="mr-2" color="blue">mdi-cash</v-icon>
             {{ currencies[1].casa.nombre }}</v-card-title
           >
-          <v-card-text class="d-flex align-center pa-2">
+          <v-card-text class="d-flex align-center pa-2 primaryBack">
             <v-row>
               <v-col class="text-center">
                 <h4>Compra</h4>
@@ -94,11 +94,11 @@
     <transition name="slide-fade">
       <v-col v-show="dolarLiqui" cols="12" lg="3" md="3" sm="6">
         <v-card>
-          <v-card-title class="justify-center text-uppercase dolar-liqui py-2">
-            <v-icon class="mr-2" color="white">mdi-cash</v-icon>
+          <v-card-title class="justify-center text-uppercase secondaryBack py-2">
+            <v-icon size="30" class="mr-2" color="purple">mdi-cash</v-icon>
             Dolar Liqui
           </v-card-title>
-          <v-card-text class="d-flex align-center pa-2">
+          <v-card-text class="d-flex align-center pa-2 primaryBack">
             <v-row>
               <v-col class="text-center">
                 <h4>Compra</h4>
@@ -124,11 +124,11 @@
     <transition name="slide-fade">
       <v-col v-show="dolarBolsa" cols="12" lg="3" md="3" sm="6">
         <v-card>
-          <v-card-title class="justify-center text-uppercase dolar-liqui py-2">
-            <v-icon class="mr-2" color="white">mdi-cash</v-icon>
+          <v-card-title class="justify-center text-uppercase secondaryBack py-2">
+            <v-icon size="30" class="mr-2" color="purple">mdi-cash</v-icon>
             {{ currencies[4].casa.nombre }}</v-card-title
           >
-          <v-card-text class="d-flex align-center pa-2">
+          <v-card-text class="d-flex align-center pa-2 primaryBack">
             <v-row>
               <v-col class="text-center">
                 <h4>Compra</h4>
@@ -165,12 +165,12 @@
       <v-col v-show="dolarBitcoin" cols="12" lg="3" md="3" sm="6">
         <v-card>
           <v-card-title
-            class="justify-center text-uppercase dolar-bitcoin py-2"
+            class="justify-center text-uppercase secondaryBack py-2"
           >
-            <v-icon class="mr-2" color="white">mdi-bitcoin</v-icon>
+            <v-icon size="30" class="mr-2" color="yellow">mdi-bitcoin</v-icon>
             {{ currencies[5].casa.nombre }}</v-card-title
           >
-          <v-card-text class="d-flex align-center pa-2">
+          <v-card-text class="d-flex align-center pa-2 primaryBack">
             <v-row>
               <v-col class="text-center">
                 <h4>Compra</h4>
@@ -361,7 +361,7 @@ export default {
 }
 .currencyValue {
   padding-top: 0.5rem;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
 }
 .variationFooter {
   text-align: center !important;
