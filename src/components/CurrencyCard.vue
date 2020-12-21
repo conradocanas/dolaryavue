@@ -31,7 +31,7 @@
       </div>
     </div>
     <div class="sparkline-chart" v-if="ticker.price">
-      <Sparkline :cdata="ticker.price" :width="380" :height="90"></Sparkline>
+      <Sparkline :cdata="ticker.price" :width="380" :height="50"></Sparkline>
     </div>
   </div>
 </template>

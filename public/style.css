@@ -52,8 +52,8 @@ body {
 	color: #f1f1f1;
   position: relative;
   width: 370px;
-  height: 200px;
-  background: #333;
+  height: 150px;
+  background: var(--v-primaryBack-base);
   box-shadow: 5px 5px 25px 0 rgba(46, 61, 73, 0.16);
   border-radius: 6px;
   padding: 0;
@@ -74,7 +74,7 @@ body {
   padding-left: 45px;
 }
 .coin-info {
-  height: 212px;
+  height: 100px;
   padding: 10px 20px 5px 15px;
 }
 .coin-per {
