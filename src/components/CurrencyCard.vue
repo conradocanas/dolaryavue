@@ -1,8 +1,7 @@
 <template>
-  <div class="coin-box" @dblclick.stop="openDetails">
+  <div class="coin-box secondaryBack" @dblclick.stop="openDetails">
     <div class="row no-gutters coin-info">
       <div class="col-7">
-        <div class="font-weight-bold">{{ info.name }}</div>
         <div class="row no-gutters mt-1">
           <div class="box-icon">
             <span :style="{ backgroundImage: 'url(' + iconbase + ')' }"></span>
@@ -32,7 +31,7 @@
       </div>
     </div>
     <div class="sparkline-chart" v-if="ticker.price">
-      <Sparkline :cdata="ticker.price" :width="380" :height="90"></Sparkline>
+      <Sparkline :cdata="ticker.price" :width="380" :height="50"></Sparkline>
     </div>
   </div>
 </template>
@@ -75,3 +74,10 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.coin-box {
+  background-color: var(--v-primaryBack-base)!important;
+}
+
+</style>

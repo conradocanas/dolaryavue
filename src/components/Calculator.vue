@@ -1,5 +1,5 @@
 <template>
-  <v-card height="380px">
+  <v-card class="secondaryBack elevation-1" height="280px">
     <v-card-title
       v-if="calculatedItem.name != ''"
       class="justify-center text-uppercase secondaryBack py-2"
@@ -8,12 +8,12 @@
     >
     <v-card-title
       v-else
-      class="justify-center text-uppercase secondaryBack py-2"
+      class="justify-center text-uppercase primaryBack py-2"
     >
       Calculadora de monedas</v-card-title
     >
-    <v-card-text v-if="calculatedItem.name != ''">
-      <v-row>
+    <v-card-text v-if="calculatedItem.name != ''" class="primaryBack pt-2">
+<!--       <v-row>
         <v-col cols="4" class="text-center">
           <h4>Compra</h4>
           <h4 class="currencyValue">$ {{ calculatedItem.buy }}</h4>
@@ -34,7 +34,7 @@
           <h4 class="currencyValue">$ {{ calculatedItem.sell }}</h4>
         </v-col>
       </v-row>
-      <v-divider class="mb-2"></v-divider>
+      <v-divider class="mb-2"></v-divider> -->
       <v-row>
         <v-col cols="12" class="text-center ma-0"
           >Seleccioná el tipo de transacción:</v-col
@@ -45,16 +45,16 @@
           >
           <v-btn
             small
-            class="primary mr-2"
+            class="background mr-2"
             @click="activeCurrencies = 'promedio'"
             >Promedio</v-btn
           >
-          <v-btn small class="primary" @click="activeCurrencies = 'venta'"
+          <v-btn small class="primary background" @click="activeCurrencies = 'venta'"
             >Venta</v-btn
           >
         </v-col>
       </v-row>
-      <div class="pa-4">
+      <div class="pa-4 primaryBack">
         <v-text-field
           dense
           label="Pesos Argentinos (ARS)"
@@ -95,6 +95,7 @@ export default {
       promedio: 1,
       firstInputSelected: true,
       activeCurrencies: "",
+
     };
   },
   mounted: function() {

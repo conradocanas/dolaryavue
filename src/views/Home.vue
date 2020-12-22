@@ -1,24 +1,26 @@
 <template>
-  <v-container>
-    <v-row>
-      <v-col v-show="showCryptoDashboard">
-        <DashBoard />
-      </v-col>
-    </v-row>
-    <v-row>
-      <v-col>
-        <DolarCards />
-      </v-col>
-    </v-row>
-    <v-row>
-      <v-col v-show="showCurrencyChart" cols="7">
-        <CurrencyChart />
-      </v-col>
-      <v-col v-show="showCalculator" cols="5">
-        <Calculator :calculatedItem="calculatedItem" />
-      </v-col>
-    </v-row>
-  </v-container>
+  <div class="background">
+    <v-container>
+      <v-row>
+        <v-col v-show="showCryptoDashboard">
+          <DashBoard />
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col>
+          <DolarCards @select-currency="selectCurrency" />
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col v-show="showCurrencyChart" lg="7" sm="12">
+          <CurrencyChart :key="graphSeries.name" :graphSeries="graphSeries" />
+        </v-col>
+        <v-col v-show="showCalculator" lg="5" sm="12">
+          <Calculator :calculatedItem="calculatedItem" />
+        </v-col>
+      </v-row>
+    </v-container>
+  </div>
 </template>
 
 <script>
@@ -45,13 +47,32 @@ export default {
         name: "",
         buy: 0,
         sell: 0,
-        average: 0
+        average: 0,
       },
+      graphSeries: [
+        {
+          data: [],
+        },
+      ],
     };
   },
-  mounted() {
-    fetch("http://164.90.149.113:3200/api/dolares/grafico/oficial/7")
-      .then((response) => response.json())
+  mounted() {},
+  methods: {
+    selectCurrency(item) {
+      fetch(
+        `http://164.90.149.113:3200/api/dolares/grafico/${this.$store.state.calculatedItem.name
+          .replace("Dolar ", "")
+          .toLowerCase()}/7`
+      )
+        .then((res) => {
+          return res.json();
+        })
+        .then((response) => {
+          this.graphSeries[0].name = this.$store.state.calculatedItem.name;
+          this.graphSeries[0].data = response;
+          console.log(this.graphSeries, item);
+        });
+    },
   },
 };
 </script>

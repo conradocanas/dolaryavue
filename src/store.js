@@ -10,7 +10,9 @@ export default new Vuex.Store({
     /* activeCurrencies: 'oficial', */
     currencies: defaultPair,
     tickers: {},
-    chartData: [],
+    chartData: {
+      data: [],
+    },
     dolarOficial: true,
     dolarBlue: true,
     dolarTurista: false,
@@ -33,9 +35,27 @@ export default new Vuex.Store({
       return state.tickers[symbol];
     },
   },
+  actions: {
+    GET_BOOKS: (state) => {
+      fetch(
+        `http://164.90.149.113:3200/api/dolares/grafico/${state.calculatedItem.name.replace("Dolar ", "").toLowerCase()}/7`
+      )
+        .then((res) => {
+          return res.json();
+        })
+        .then((response) => {
+          let graphData = response
+          state.commit("SET_GRAPH_DATA", graphData)
+        });
+    },
+  },
   mutations: {
+    SET_GRAPH_DATA: (state, payload) => {
+      state.chartData.name = state.calculatedItem.name
+      state.chartData.data = payload
+      console.log(state.chartData)
+    },
     SET_SELECTED_ITEM: (state, payload) => {
-      console.log(payload)
       state.calculatedItem.name = payload.nombre
       state.calculatedItem.buy = payload.compra
       state.calculatedItem.sell = payload.venta
