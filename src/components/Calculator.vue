@@ -13,7 +13,7 @@
       Calculadora de monedas</v-card-title
     >
     <v-card-text v-if="calculatedItem.name != ''" class="primaryBack pt-2">
-<!--       <v-row>
+      <v-row>
         <v-col cols="4" class="text-center">
           <h4>Compra</h4>
           <h4 class="currencyValue">$ {{ calculatedItem.buy }}</h4>
@@ -34,7 +34,7 @@
           <h4 class="currencyValue">$ {{ calculatedItem.sell }}</h4>
         </v-col>
       </v-row>
-      <v-divider class="mb-2"></v-divider> -->
+      <v-divider class="mb-2"></v-divider>
       <v-row>
         <v-col cols="12" class="text-center ma-0"
           >Seleccioná el tipo de transacción:</v-col
