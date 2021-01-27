@@ -1,19 +1,21 @@
 <template>
-  <v-app class="background">
+  <v-app dark>
     <navbar></navbar>
-    <router-view></router-view>
+    <div class="background">
+      <router-view></router-view>
+    </div>
   </v-app>
 </template>
 
 <script>
-import Navbar from "./components/Navbar"
+import Navbar from "./components/Navbar";
 // @ is an alias to /src
 export default {
-  name: 'Home',
+  name: "Home",
   components: {
-    Navbar
-  }
-}
+    Navbar,
+  },
+};
 </script>
 
 <style lang="scss">

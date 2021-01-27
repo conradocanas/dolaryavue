@@ -17,6 +17,7 @@ export default new Vuetify({
           },
           light: {
             // Custom colors
+            background: "#171E24",
             secondaryBack: "#f1f1f1"
           }
         }

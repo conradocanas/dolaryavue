@@ -1,6 +1,12 @@
 body {
-  color: #f1f1f1;
+  color: #171E24;
   overflow: hidden;
+}
+.theme--dark.v-application {
+  background-color: #171E24 !important;
+}
+.theme--light.v-application {
+  background-color: #171E24 !important;
 }
 .country-name {
   display: inline-block;
