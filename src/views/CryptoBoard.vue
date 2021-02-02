@@ -1,5 +1,5 @@
 <template>
-  <div class="board">
+  <div class="d-flex flex-wrap justify-space-between">
     <div class="card-block" v-for="(value, index) in currencies" :key="index">
       <CryptoCard :ticker="tickers[value.symbol] || {}" :info="value"></CryptoCard>
     </div>
