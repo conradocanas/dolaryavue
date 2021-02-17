@@ -1,5 +1,5 @@
 <template>
-  <v-card class="secondaryBack elevation-1" height="280px">
+  <v-card class="secondaryBack elevation-1">
     <v-card-title
       v-if="calculatedItem.name != ''"
       class="justify-center text-uppercase secondaryBack py-2"
@@ -95,7 +95,6 @@ export default {
       promedio: 1,
       firstInputSelected: true,
       activeCurrencies: "",
-
     };
   },
   mounted: function() {

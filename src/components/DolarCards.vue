@@ -39,12 +39,7 @@
               x-small
               class="elevation-1 font-weight-bold"
               color="background"
-              @click="
-                $emit(selectCurrency(),
-                  currencies[0].casa
-                )
-              "
-              >Calcular</v-btn
+              @click="setItemToStore(currencies[0].casa)">Calcular</v-btn
             >
           </div>
         </v-card>
@@ -80,9 +75,7 @@
               class="elevation-1 font-weight-bold"
               color="background"
               @click="
-                selectCurrency(
-                  currencies[1].casa
-                )
+                setItemToStore(currencies[1].casa)
               "
               >Calcular</v-btn
             >
@@ -150,9 +143,7 @@
               class="elevation-1 font-weight-bold"
               color="background"
               @click="
-                selectCurrency(
-                  currencies[4].casa
-                )
+                setItemToStore(currencies[4].casa)
               "
               >Calcular</v-btn
             >
@@ -237,6 +228,7 @@ export default {
   components: {
     variationText,
   },
+  props: ["selectedItem"],
   data() {
     return {
       currencies: null,
@@ -260,6 +252,10 @@ export default {
     "calculatedItem"
   ]),
   methods: {
+    setItemToStore(item) {
+    this.$store.commit("SET_SELECTED_ITEM", item);
+    this.$store.commit("CALCULATOR_DRAWER")
+    }
 /*     selectCurrency(item) {
       fetch(
         `http://164.90.149.113:3200/api/dolares/grafico/${item.nombre.replace("Dolar ", "").toLowerCase()}/7`

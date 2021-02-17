@@ -5,32 +5,43 @@
           <DashBoard />
         </v-col>
         <v-col cols="12">
-          <DolarCards @select-currency="selectCurrency" />
+          <DolarCards @select-currency="selectCurrency" :selectedItem="calculatedItem" />
         </v-col>
       </v-row>
-<!--       <v-row>
+       <v-row>
         <v-col v-show="showCurrencyChart" lg="7" sm="12">
+        <!--
           <CurrencyChart :key="graphSeries.name" :graphSeries="graphSeries" />
+         -->
         </v-col>
         <v-col v-show="showCalculator" lg="5" sm="12">
           <Calculator :calculatedItem="calculatedItem" />
         </v-col>
-      </v-row> -->
+      </v-row>
+      <v-navigation-drawer
+        v-model="calculatorDrawer"
+        absolute
+        temporary
+      >
+        <Calculator :calculatedItem="calculatedItem" />
+      </v-navigation-drawer>
     </v-container>
 </template>
 
 <script>
 import DolarCards from "@/components/DolarCards.vue";
 /* import CurrencyChart from "@/components/CurrencyChart.vue"; */
-/* import Calculator from "../components/Calculator.vue"; */
+import Calculator from "../components/Calculator.vue";
 import DashBoard from "./Dashboard";
+
+import { mapState } from "vuex";
 
 // @ is an alias to /src
 export default {
   name: "Home",
   components: {
     DashBoard,
-/*     Calculator, */
+    Calculator,
 /*     CurrencyChart, */
     DolarCards,
   },
@@ -55,7 +66,8 @@ export default {
   mounted() {},
   methods: {
     selectCurrency(item) {
-      fetch(
+      console.log("Entro a selectCurrency", item)
+/*       fetch(
         `http://164.90.149.113:3200/api/dolares/grafico/${this.$store.state.calculatedItem.name
           .replace("Dolar ", "")
           .toLowerCase()}/7`
@@ -69,13 +81,15 @@ export default {
           this.graphSeries[0].data = response;
           console.log(this.graphSeries, item);
         });
+        */
     },
   },
+  computed: mapState(["calculatorDrawer"]),
 };
 </script>
 
 <style scoped>
 .home-body {
-  height: 100vh;
+  min-height: 100vh;
 }
 </style>

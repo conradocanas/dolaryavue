@@ -26,6 +26,7 @@ export default new Vuex.Store({
       sell: 0,
       average: 0
     },
+    calculatorDrawer: false,
   },
   getters: {
     getSymbolById: (state) => (symbol) => {
@@ -54,6 +55,9 @@ export default new Vuex.Store({
       state.chartData.name = state.calculatedItem.name
       state.chartData.data = payload
       console.log(state.chartData)
+    },
+    CALCULATOR_DRAWER (state) {
+      state.calculatorDrawer = !state.calculatorDrawer
     },
     SET_SELECTED_ITEM: (state, payload) => {
       state.calculatedItem.name = payload.nombre

@@ -1,6 +1,5 @@
 <template>
     <v-footer
-    fixed
     padless
     >
         <v-card-text class="primaryBack py-1">

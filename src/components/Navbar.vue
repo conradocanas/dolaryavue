@@ -18,7 +18,11 @@
 
 <script>
 export default {
-  data: () => ({}),
+  data() {
+    return {
+      drawer: true,
+    }
+  },
   created() {
     this.$vuetify.theme.dark = true;
   },
