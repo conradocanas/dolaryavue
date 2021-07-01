@@ -48,6 +48,9 @@ export default new Vuex.Store({
           state.commit("SET_GRAPH_DATA", graphData)
         });
     },
+    UPDATE_DOLAR_BOLSA({commit}, payload){
+      commit("DOLAR_BOLSA", payload)
+    }
   },
   mutations: {
     SET_GRAPH_DATA: (state, payload) => {
@@ -87,5 +90,8 @@ export default new Vuex.Store({
         JSON.stringify(state.currencies)
       );
     },
+    DOLAR_BOLSA(state, payload){
+      state.dolarBolsa = payload
+    }
   },
 });

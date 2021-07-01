@@ -3,7 +3,7 @@
     <transition name="slide-fade">
       <v-col
         v-show="dolarOficial"
-        cols="12"
+        cols="6"
         lg="4"
         md="4"
         sm="6"
@@ -12,9 +12,7 @@
         origin="center center"
       >
         <v-card>
-          <v-card-title
-            class="justify-center secondaryBack py-2 currency-name"
-          >
+          <v-card-title class="justify-center secondaryBack py-2 currency-name">
             <v-icon size="30" class="mr-2" color="green">mdi-cash</v-icon>
             {{ currencies[0].casa.nombre }}</v-card-title
           >
@@ -30,20 +28,17 @@
               </v-col>
             </v-row>
           </v-card-text>
-          <div class="variationFooter secondaryBack py-2 px-4 d-flex">
+          <div class="variationFooter secondaryBack py-2 px-4 d-flex" :class="mobile ? 'justify-center' : null">
             <variationText
               :variationText="currencies[0].casa.variacion"
             ></variationText>
-            <v-spacer></v-spacer>
+            <v-spacer v-if="!mobile"></v-spacer>
             <v-btn
               x-small
               class="elevation-1 font-weight-bold"
               color="background"
-              @click="
-                $emit(selectCurrency(),
-                  currencies[0].casa
-                )
-              "
+              @click="$emit(selectCurrency(), currencies[0].casa)"
+              v-if="!mobile"
               >Calcular</v-btn
             >
           </div>
@@ -52,7 +47,7 @@
     </transition>
 
     <transition name="slide-fade">
-      <v-col v-show="dolarBlue" cols="12" lg="4" md="4" sm="6">
+      <v-col v-show="dolarBlue" cols="6" lg="4" md="4" sm="6">
         <v-card>
           <v-card-title class="justify-center secondaryBack py-2 currency-name">
             <v-icon size="30" class="mr-2" color="blue">mdi-cash</v-icon>
@@ -62,28 +57,25 @@
             <v-row>
               <v-col class="text-center">
                 <h4>Compra</h4>
-                <h4 class="currencyValue">$ {{ currencies[1].casa.compra }}</h4>
+                <h4 class="currencyValue">${{ currencies[1].casa.compra }}</h4>
               </v-col>
               <v-col class="text-center">
                 <h4>Venta</h4>
-                <h4 class="currencyValue">$ {{ currencies[1].casa.venta }}</h4>
+                <h4 class="currencyValue">${{ currencies[1].casa.venta }}</h4>
               </v-col>
             </v-row>
           </v-card-text>
-          <div class="variationFooter secondaryBack py-2 px-4 d-flex">
+          <div class="variationFooter secondaryBack py-2 px-4 d-flex" :class="mobile ? 'justify-center' : null">
             <variationText
               :variationText="currencies[1].casa.variacion"
             ></variationText>
-            <v-spacer></v-spacer>
+            <v-spacer v-if="!mobile"></v-spacer>
             <v-btn
               x-small
               class="elevation-1 font-weight-bold"
               color="background"
-              @click="
-                selectCurrency(
-                  currencies[1].casa
-                )
-              "
+              @click="selectCurrency(currencies[1].casa)"
+              v-if="!mobile"
               >Calcular</v-btn
             >
           </div>
@@ -92,7 +84,7 @@
     </transition>
 
     <transition name="slide-fade">
-      <v-col v-show="dolarLiqui" cols="12" lg="4" md="4" sm="6">
+      <v-col v-show="dolarLiqui" cols="6" lg="4" md="4" sm="6">
         <v-card>
           <v-card-title class="justify-center secondaryBack py-2 currency-name">
             <v-icon size="30" class="mr-2" color="purple">mdi-cash</v-icon>
@@ -102,11 +94,11 @@
             <v-row>
               <v-col class="text-center">
                 <h4>Compra</h4>
-                <h4 class="currencyValue">$ {{ currencies[3].casa.compra }}</h4>
+                <h4 class="currencyValue">${{ currencies[3].casa.compra }}</h4>
               </v-col>
               <v-col class="text-center">
                 <h4>Venta</h4>
-                <h4 class="currencyValue">$ {{ currencies[3].casa.venta }}</h4>
+                <h4 class="currencyValue">${{ currencies[3].casa.venta }}</h4>
               </v-col>
             </v-row>
           </v-card-text>
@@ -122,7 +114,7 @@
     </transition>
 
     <transition name="slide-fade">
-      <v-col v-show="dolarBolsa" cols="12" lg="4" md="4" sm="6">
+      <v-col v-show="dolarBolsa" cols="6" lg="4" md="4" sm="6">
         <v-card>
           <v-card-title class="justify-center secondaryBack py-2 currency-name">
             <v-icon size="30" class="mr-2" color="purple">mdi-cash</v-icon>
@@ -132,28 +124,25 @@
             <v-row>
               <v-col class="text-center">
                 <h4>Compra</h4>
-                <h4 class="currencyValue">$ {{ currencies[4].casa.compra }}</h4>
+                <h4 class="currencyValue">${{ currencies[4].casa.compra }}</h4>
               </v-col>
               <v-col class="text-center">
                 <h4>Venta</h4>
-                <h4 class="currencyValue">$ {{ currencies[4].casa.venta }}</h4>
+                <h4 class="currencyValue">${{ currencies[4].casa.venta }}</h4>
               </v-col>
             </v-row>
           </v-card-text>
-          <div class="variationFooter secondaryBack py-2 px-4 d-flex">
+          <div class="variationFooter secondaryBack py-2 px-4 d-flex" :class="mobile ? 'justify-center' : null">
             <variationText
               :variationText="currencies[4].casa.variacion"
             ></variationText>
-            <v-spacer></v-spacer>
+            <v-spacer v-if="!mobile"></v-spacer>
             <v-btn
               x-small
               class="elevation-1 font-weight-bold"
               color="background"
-              @click="
-                selectCurrency(
-                  currencies[4].casa
-                )
-              "
+              @click="selectCurrency(currencies[4].casa)"
+              v-if="!mobile"
               >Calcular</v-btn
             >
           </div>
@@ -164,9 +153,7 @@
     <transition name="slide-fade">
       <v-col v-show="dolarBitcoin" cols="12" lg="4" md="4" sm="6">
         <v-card>
-          <v-card-title
-            class="justify-center secondaryBack py-2 currency-name"
-          >
+          <v-card-title class="justify-center secondaryBack py-2 currency-name">
             <v-icon size="30" class="mr-2" color="yellow">mdi-bitcoin</v-icon>
             {{ currencies[5].casa.nombre }}</v-card-title
           >
@@ -235,33 +222,39 @@ import variationText from "@/components/variationText.vue";
 
 export default {
   components: {
-    variationText,
+    variationText
   },
   data() {
     return {
-      currencies: null,
+      currencies: null
     };
   },
   created() {
     fetch("https://www.dolarsi.com/api/api.php?type=valoresprincipales")
-      .then((response) => response.json())
-      .then((data) => {
+      .then(response => response.json())
+      .then(data => {
+        console.log(data)
         this.currencies = data;
       });
   },
-  computed: mapState([
-    "dolarOficial",
-    "dolarBlue",
-    "dolarTurista",
-    "dolarBolsa",
-    "dolarLiqui",
-    "dolarSoja",
-    "dolarBitcoin",
-    "calculatedItem"
-  ]),
+  computed: {
+    ...mapState([
+      "dolarOficial",
+      "dolarBlue",
+      "dolarTurista",
+      "dolarBolsa",
+      "dolarLiqui",
+      "dolarSoja",
+      "dolarBitcoin",
+      "calculatedItem"
+    ]),
+    mobile() {
+      return this.$vuetify.breakpoint.sm || this.$vuetify.breakpoint.xs
+    }
+  },
   methods: {
-/*     selectCurrency(item) {
-      fetch(
+        selectCurrency() {
+/*       fetch(
         `http://164.90.149.113:3200/api/dolares/grafico/${item.nombre.replace("Dolar ", "").toLowerCase()}/7`
       )
         .then((res) => {
@@ -282,9 +275,9 @@ export default {
         this.selectedArsCurrency = buy;
       } else {
         this.selectedArsCurrency = average;
-      } 
-    },*/
-  },
+      } */
+    },
+  }
 };
 </script>
 
@@ -362,7 +355,7 @@ export default {
 .currencyValue {
   padding-top: 0.5rem;
   font-size: 1.2rem;
-  color: var(--v-primaryColor-base)!important;
+  color: var(--v-primaryColor-base) !important;
 }
 .variationFooter {
   text-align: center !important;
@@ -384,5 +377,19 @@ export default {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1px;
+}
+
+@media (max-width: 700px) {
+  .currency-name {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .currencyValue {
+    padding-top: 0.5rem;
+    font-size: 1rem;
+    color: var(--v-primaryColor-base) !important;
+  }
 }
 </style>

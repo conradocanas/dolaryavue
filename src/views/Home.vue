@@ -2,6 +2,13 @@
   <div class="content">
     <v-container>
       <v-row class="d-flex align-center justify-center">
+                <v-col cols="12">
+          <div class="text-start">
+            <h2 class="category-title">Mercado Dolar Argentina</h2>
+            <v-divider></v-divider>
+          </div>
+          <DolarCards @select-currency="selectCurrency" />
+        </v-col>
         <v-col cols="12" class="pb-0" v-show="showCryptoDashboard">
           <div class="text-start">
             <h2 class="category-title">Criptomonedas</h2>
@@ -9,13 +16,7 @@
           </div>
           <DashBoard />
         </v-col>
-        <v-col cols="12">
-          <div class="text-start">
-            <h2 class="category-title">Mercado Dolar Argentina</h2>
-            <v-divider></v-divider>
-          </div>
-          <DolarCards @select-currency="selectCurrency" />
-        </v-col>
+
       </v-row>
       <!--       <v-row>
         <v-col v-show="showCurrencyChart" lg="7" sm="12">

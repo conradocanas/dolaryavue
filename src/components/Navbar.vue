@@ -9,7 +9,9 @@
           </span>
         </v-col>
         <v-col class="d-flex justify-end align-center">
-          <router-link to="/">Home</router-link>
+          <v-btn @click="$emit('drawerStatus')" text>
+            <v-icon>mdi-menu</v-icon>
+          </v-btn>
         </v-col>
       </v-row>
     </v-container>
@@ -18,7 +20,9 @@
 
 <script>
 export default {
-  data: () => ({}),
+  data: () => ({
+    drawer: false
+  }),
   created() {
     this.$vuetify.theme.dark = true;
   },
