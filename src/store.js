@@ -15,9 +15,9 @@ export default new Vuex.Store({
     },
     dolarOficial: true,
     dolarBlue: true,
-    dolarTurista: false,
+    dolarTurista: true,
     dolarBolsa: true,
-    dolarBitcoin: true,
+    dolarBitcoin: false,
     dolarSoja: false,
     dolarLiqui: false,
     calculatedItem: {

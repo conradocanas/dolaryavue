@@ -14,6 +14,7 @@ export default new Vuetify({
             background: "#171E24",
 
             primaryColor: "#f1f1f1",
+            secondaryColor: "#f9f9f9",
           },
           light: {
             // Custom colors

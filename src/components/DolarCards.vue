@@ -4,8 +4,8 @@
       <v-col
         v-show="dolarOficial"
         cols="12"
-        lg="3"
-        md="3"
+        lg="4"
+        md="4"
         sm="6"
         xs="6"
         transition="scale-transition"
@@ -52,7 +52,7 @@
     </transition>
 
     <transition name="slide-fade">
-      <v-col v-show="dolarBlue" cols="12" lg="3" md="3" sm="6">
+      <v-col v-show="dolarBlue" cols="12" lg="4" md="4" sm="6">
         <v-card>
           <v-card-title class="justify-center secondaryBack py-2 currency-name">
             <v-icon size="30" class="mr-2" color="blue">mdi-cash</v-icon>
@@ -92,7 +92,7 @@
     </transition>
 
     <transition name="slide-fade">
-      <v-col v-show="dolarLiqui" cols="12" lg="3" md="3" sm="6">
+      <v-col v-show="dolarLiqui" cols="12" lg="4" md="4" sm="6">
         <v-card>
           <v-card-title class="justify-center secondaryBack py-2 currency-name">
             <v-icon size="30" class="mr-2" color="purple">mdi-cash</v-icon>
@@ -122,7 +122,7 @@
     </transition>
 
     <transition name="slide-fade">
-      <v-col v-show="dolarBolsa" cols="12" lg="3" md="3" sm="6">
+      <v-col v-show="dolarBolsa" cols="12" lg="4" md="4" sm="6">
         <v-card>
           <v-card-title class="justify-center secondaryBack py-2 currency-name">
             <v-icon size="30" class="mr-2" color="purple">mdi-cash</v-icon>
@@ -162,7 +162,7 @@
     </transition>
 
     <transition name="slide-fade">
-      <v-col v-show="dolarBitcoin" cols="12" lg="3" md="3" sm="6">
+      <v-col v-show="dolarBitcoin" cols="12" lg="4" md="4" sm="6">
         <v-card>
           <v-card-title
             class="justify-center secondaryBack py-2 currency-name"

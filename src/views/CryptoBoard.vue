@@ -1,9 +1,9 @@
 <template>
-  <div class="d-flex flex-wrap justify-space-between">
-    <div class="card-block" v-for="(value, index) in currencies" :key="index">
-      <CryptoCard :ticker="tickers[value.symbol] || {}" :info="value"></CryptoCard>
-    </div>
-  </div>
+  <v-row class="d-flex flex-wrap justify-space-between">
+    <v-col class="card-block" v-for="(value, index) in currencies" :key="index">
+      <CryptoCard class="card" :ticker="tickers[value.symbol] || {}" :info="value"></CryptoCard>
+    </v-col>
+  </v-row>
 </template>
 <script>
   import CryptoCard from '../components/CryptoCard.vue'
@@ -18,3 +18,6 @@
     }
   }
 </script>
+
+<style scoped>
+</style>

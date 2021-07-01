@@ -74,3 +74,8 @@ export default {
   },
 };
 </script>
+<style scoped>
+.coin-box {
+  width: 100%;
+}
+</style>
