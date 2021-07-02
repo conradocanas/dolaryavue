@@ -1,6 +1,6 @@
 <template>
   <v-app-bar class="secondaryBack" dark>
-    <v-container>
+    <v-container class="px-0">
       <v-row>
         <v-col class="d-flex justify-left align-center">
           <h2>DolarYa.ar</h2>
@@ -9,7 +9,7 @@
           </span>
         </v-col>
         <v-col class="d-flex justify-end align-center">
-          <v-btn @click="$emit('drawerStatus')" text>
+          <v-btn small @click="$emit('drawerStatus')" text>
             <v-icon>mdi-menu</v-icon>
           </v-btn>
         </v-col>

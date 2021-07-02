@@ -13,22 +13,25 @@
       >
         <v-card>
           <v-card-title class="justify-center secondaryBack py-2 currency-name">
-            <v-icon size="30" class="mr-2" color="green">mdi-cash</v-icon>
+            <v-icon size="20" class="mr-1" color="green">mdi-cash</v-icon>
             {{ currencies[0].casa.nombre }}</v-card-title
           >
           <v-card-text class="d-flex align-center pa-2 primaryBack">
             <v-row>
-              <v-col class="text-center">
+              <v-col class="text-center pa-1">
                 <h4>Compra</h4>
-                <h4 class="currencyValue">$ {{ currencies[0].casa.compra }}</h4>
+                <h4 class="currencyValue">${{ currencies[0].casa.compra }}</h4>
               </v-col>
-              <v-col class="text-center">
+              <v-col class="text-center pa-1">
                 <h4>Venta</h4>
-                <h4 class="currencyValue">$ {{ currencies[0].casa.venta }}</h4>
+                <h4 class="currencyValue">${{ currencies[0].casa.venta }}</h4>
               </v-col>
             </v-row>
           </v-card-text>
-          <div class="variationFooter secondaryBack py-2 px-4 d-flex" :class="mobile ? 'justify-center' : null">
+          <div
+            class="variationFooter secondaryBack py-2 px-4 d-flex"
+            :class="mobile ? 'justify-center' : null"
+          >
             <variationText
               :variationText="currencies[0].casa.variacion"
             ></variationText>
@@ -50,22 +53,25 @@
       <v-col v-show="dolarBlue" cols="6" lg="4" md="4" sm="6">
         <v-card>
           <v-card-title class="justify-center secondaryBack py-2 currency-name">
-            <v-icon size="30" class="mr-2" color="blue">mdi-cash</v-icon>
+            <v-icon size="20" class="mr-1" color="blue">mdi-cash</v-icon>
             {{ currencies[1].casa.nombre }}</v-card-title
           >
           <v-card-text class="d-flex align-center pa-2 primaryBack">
             <v-row>
-              <v-col class="text-center">
+              <v-col class="text-center pa-1">
                 <h4>Compra</h4>
                 <h4 class="currencyValue">${{ currencies[1].casa.compra }}</h4>
               </v-col>
-              <v-col class="text-center">
+              <v-col class="text-center pa-1">
                 <h4>Venta</h4>
                 <h4 class="currencyValue">${{ currencies[1].casa.venta }}</h4>
               </v-col>
             </v-row>
           </v-card-text>
-          <div class="variationFooter secondaryBack py-2 px-4 d-flex" :class="mobile ? 'justify-center' : null">
+          <div
+            class="variationFooter secondaryBack py-2 px-4 d-flex"
+            :class="mobile ? 'justify-center' : null"
+          >
             <variationText
               :variationText="currencies[1].casa.variacion"
             ></variationText>
@@ -87,16 +93,16 @@
       <v-col v-show="dolarLiqui" cols="6" lg="4" md="4" sm="6">
         <v-card>
           <v-card-title class="justify-center secondaryBack py-2 currency-name">
-            <v-icon size="30" class="mr-2" color="purple">mdi-cash</v-icon>
+            <v-icon size="20" class="mr-1" color="purple">mdi-cash</v-icon>
             Dolar Liqui
           </v-card-title>
           <v-card-text class="d-flex align-center pa-2 primaryBack">
             <v-row>
-              <v-col class="text-center">
+              <v-col class="text-center pa-1">
                 <h4>Compra</h4>
                 <h4 class="currencyValue">${{ currencies[3].casa.compra }}</h4>
               </v-col>
-              <v-col class="text-center">
+              <v-col class="text-center pa-1">
                 <h4>Venta</h4>
                 <h4 class="currencyValue">${{ currencies[3].casa.venta }}</h4>
               </v-col>
@@ -117,22 +123,25 @@
       <v-col v-show="dolarBolsa" cols="6" lg="4" md="4" sm="6">
         <v-card>
           <v-card-title class="justify-center secondaryBack py-2 currency-name">
-            <v-icon size="30" class="mr-2" color="purple">mdi-cash</v-icon>
+            <v-icon size="20" class="mr-1" color="purple">mdi-cash</v-icon>
             {{ currencies[4].casa.nombre }}</v-card-title
           >
           <v-card-text class="d-flex align-center pa-2 primaryBack">
             <v-row>
-              <v-col class="text-center">
+              <v-col class="text-center pa-1">
                 <h4>Compra</h4>
                 <h4 class="currencyValue">${{ currencies[4].casa.compra }}</h4>
               </v-col>
-              <v-col class="text-center">
+              <v-col class="text-center pa-1">
                 <h4>Venta</h4>
                 <h4 class="currencyValue">${{ currencies[4].casa.venta }}</h4>
               </v-col>
             </v-row>
           </v-card-text>
-          <div class="variationFooter secondaryBack py-2 px-4 d-flex" :class="mobile ? 'justify-center' : null">
+          <div
+            class="variationFooter secondaryBack py-2 px-4 d-flex"
+            :class="mobile ? 'justify-center' : null"
+          >
             <variationText
               :variationText="currencies[4].casa.variacion"
             ></variationText>
@@ -154,16 +163,16 @@
       <v-col v-show="dolarBitcoin" cols="12" lg="4" md="4" sm="6">
         <v-card>
           <v-card-title class="justify-center secondaryBack py-2 currency-name">
-            <v-icon size="30" class="mr-2" color="yellow">mdi-bitcoin</v-icon>
+            <v-icon size="20" class="mr-1" color="yellow">mdi-bitcoin</v-icon>
             {{ currencies[5].casa.nombre }}</v-card-title
           >
           <v-card-text class="d-flex align-center pa-2 primaryBack">
             <v-row>
-              <v-col class="text-center">
+              <v-col class="text-center pa-1">
                 <h4>Compra</h4>
                 <h4 class="currencyValue">{{ currencies[5].casa.compra }}</h4>
               </v-col>
-              <v-col class="text-center">
+              <v-col class="text-center pa-1">
                 <h4>Venta</h4>
                 <h4 class="currencyValue">{{ currencies[5].casa.venta }}</h4>
               </v-col>
@@ -197,7 +206,7 @@
                 <h4>Compra</h4>
                 <h4 class="currencyValue">{{ currencies[2].casa.compra }}</h4>
               </v-col>
-              <v-col class="text-center">
+              <v-col class="text-center pa-1">
                 <h4>Venta</h4>
                 <h4 class="currencyValue">$ {{ currencies[2].casa.venta }}</h4>
               </v-col>
@@ -233,7 +242,7 @@ export default {
     fetch("https://www.dolarsi.com/api/api.php?type=valoresprincipales")
       .then(response => response.json())
       .then(data => {
-        console.log(data)
+        console.log(data);
         this.currencies = data;
       });
   },
@@ -249,12 +258,12 @@ export default {
       "calculatedItem"
     ]),
     mobile() {
-      return this.$vuetify.breakpoint.sm || this.$vuetify.breakpoint.xs
+      return this.$vuetify.breakpoint.sm || this.$vuetify.breakpoint.xs;
     }
   },
   methods: {
-        selectCurrency() {
-/*       fetch(
+    selectCurrency() {
+      /*       fetch(
         `http://164.90.149.113:3200/api/dolares/grafico/${item.nombre.replace("Dolar ", "").toLowerCase()}/7`
       )
         .then((res) => {
@@ -276,7 +285,7 @@ export default {
       } else {
         this.selectedArsCurrency = average;
       } */
-    },
+    }
   }
 };
 </script>
@@ -384,12 +393,16 @@ export default {
     font-size: 0.8rem;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.6px;
   }
   .currencyValue {
     padding-top: 0.5rem;
-    font-size: 1rem;
+    font-size: 0.8rem;
     color: var(--v-primaryColor-base) !important;
+  }
+  .variationFooter {
+    text-align: center !important;
+    font-size: 12px;
   }
 }
 </style>

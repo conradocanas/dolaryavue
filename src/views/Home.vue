@@ -1,31 +1,22 @@
 <template>
   <div class="content">
-    <v-container>
+    <v-container class="pt-0">
       <v-row class="d-flex align-center justify-center">
-                <v-col cols="12">
+        <v-col cols="12" class="py-0">
           <div class="text-start">
             <h2 class="category-title">Mercado Dolar Argentina</h2>
             <v-divider></v-divider>
           </div>
           <DolarCards @select-currency="selectCurrency" />
         </v-col>
-        <v-col cols="12" class="pb-0" v-show="showCryptoDashboard">
+        <v-col cols="12" class="pt-0" v-show="showCryptoDashboard">
           <div class="text-start">
             <h2 class="category-title">Criptomonedas</h2>
             <v-divider></v-divider>
           </div>
           <DashBoard />
         </v-col>
-
       </v-row>
-      <!--       <v-row>
-        <v-col v-show="showCurrencyChart" lg="7" sm="12">
-          <CurrencyChart :key="graphSeries.name" :graphSeries="graphSeries" />
-        </v-col>
-        <v-col v-show="showCalculator" lg="5" sm="12">
-          <Calculator :calculatedItem="calculatedItem" />
-        </v-col>
-      </v-row> -->
     </v-container>
   </div>
 </template>
