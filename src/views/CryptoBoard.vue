@@ -18,9 +18,3 @@
     }
   }
 </script>
-
-<style scoped>
-.card-block:first-child {
-  flex-basis: 100%;
-}
-</style>

@@ -65,7 +65,7 @@ body {
   transition: 0.5s;
   display: flex;
   align-content: center;
-  flex-direction: reverse;
+  flex-direction: column;
 }
 .coin-price {
   font-size: 21px;
@@ -126,4 +126,10 @@ body {
   font-size: 12px;
   padding-bottom: 0px;
   text-align: left;
+}
+
+@media (max-width: 700px) {
+  .card-block:first-child {
+    flex-basis: 100%;
+  }
 }
