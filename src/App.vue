@@ -5,7 +5,12 @@
       <router-view></router-view>
     </div>
     <Footer />
-    <v-navigation-drawer class="secondaryBack" v-model="drawer" absolute temporary>
+    <v-navigation-drawer
+      class="secondaryBack"
+      v-model="drawer"
+      absolute
+      temporary
+    >
       <v-list-item>
         <v-list-item-content>
           <v-list-item-title>Personaliza tu panel</v-list-item-title>
@@ -16,17 +21,26 @@
 
       <v-list dense>
         <v-list-item
-          class="d-flex justify-space-around"
           v-for="(item, i) in menuItems"
           :key="i"
+          class="d-flex align-center my-2"
         >
-          <span>{{ item.name }}</span>
-          <v-switch
-            v-model="item.status"
-            @change="$store.dispatch('UPDATE_DOLAR_BOLSA', item.status)"
-            :readonly="item.id !== 'bolsa'"
-            >Status</v-switch
-          >
+          <div class="text-start" style="width: 50%"><span>{{ item.name }}</span></div>
+          <div v-if="!item.required" class="d-flex justify-end align-center" style="width: 50%">
+            <v-switch
+              v-model="item.status"
+              hide-details
+              class="mt-0"
+              @change="
+                $store.dispatch('UPDATE_DASHBOARD_ITEM', {
+                  name: item.name,
+                  status: item.status
+                })
+              "
+              >Status</v-switch
+            >
+          </div>
+          <div v-else style="width: 50%"></div>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
@@ -50,17 +64,26 @@ export default {
         {
           name: "Dolar Oficial",
           status: true,
-          id: "oficial"
+          id: "oficial",
+          required: true
         },
         {
           name: "Dolar Blue",
           status: true,
-          id: "blue"
+          id: "blue",
+          required: true
         },
         {
           name: "Dolar Bolsa",
+          status: false,
+          id: "bolsa",
+          required: false
+        },
+        {
+          name: "Dolar Liqui",
           status: true,
-          id: "bolsa"
+          id: "liqui",
+          required: false
         }
       ]
     };
@@ -77,8 +100,12 @@ export default {
   },
   mounted() {
     if (this.mobile) {
-      this.menuItems[2].status = false;
-      this.$store.dispatch("UPDATE_DOLAR_BOLSA", false);
+      this.$store.commit("DASHBOARD_ITEM", {
+        name: "Dolar Liqui",
+        status: false
+      });
+      this.menuItems[3].status = false;
+      this.menuItems[4].status = false;
     }
   }
 };

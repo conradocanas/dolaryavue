@@ -2,7 +2,7 @@
   <v-row v-if="currencies" class="d-flex justify-center">
     <transition name="slide-fade">
       <v-col
-        v-show="dolarOficial"
+        v-show="DolarOficial.status"
         cols="6"
         lg="4"
         md="4"
@@ -50,7 +50,7 @@
     </transition>
 
     <transition name="slide-fade">
-      <v-col v-show="dolarBlue" cols="6" lg="4" md="4" sm="6">
+      <v-col v-show="DolarBlue.status" cols="6" lg="4" md="4" sm="6">
         <v-card>
           <v-card-title class="justify-center secondaryBack py-2 currency-name">
             <v-icon size="20" class="mr-1" color="blue">mdi-cash</v-icon>
@@ -90,10 +90,10 @@
     </transition>
 
     <transition name="slide-fade">
-      <v-col v-show="dolarLiqui" cols="6" lg="4" md="4" sm="6">
+      <v-col v-show="DolarLiqui.status" cols="6" lg="4" md="4" sm="6">
         <v-card>
           <v-card-title class="justify-center secondaryBack py-2 currency-name">
-            <v-icon size="20" class="mr-1" color="purple">mdi-cash</v-icon>
+            <v-icon size="20" class="mr-1" color="pink">mdi-cash</v-icon>
             Dolar Liqui
           </v-card-title>
           <v-card-text class="d-flex align-center pa-2 primaryBack">
@@ -108,19 +108,29 @@
               </v-col>
             </v-row>
           </v-card-text>
-          <div class="variationFooter secondaryBack py-2 px-4 d-flex">
+          <div
+            class="variationFooter secondaryBack py-2 px-4 d-flex"
+            :class="mobile ? 'justify-center' : null"
+          >
             <variationText
               :variationText="currencies[3].casa.variacion"
             ></variationText>
-            <v-spacer></v-spacer>
-            <v-btn x-small class="elevation-1" color="primary">Calcular</v-btn>
+            <v-spacer v-if="!mobile"></v-spacer>
+            <v-btn
+              x-small
+              class="elevation-1 font-weight-bold"
+              color="background"
+              @click="selectCurrency(currencies[3].casa)"
+              v-if="!mobile"
+              >Calcular</v-btn
+            >
           </div>
         </v-card>
       </v-col>
     </transition>
 
     <transition name="slide-fade">
-      <v-col v-show="dolarBolsa" cols="6" lg="4" md="4" sm="6">
+      <v-col v-show="DolarBolsa.status" cols="6" lg="4" md="4" sm="6">
         <v-card>
           <v-card-title class="justify-center secondaryBack py-2 currency-name">
             <v-icon size="20" class="mr-1" color="purple">mdi-cash</v-icon>
@@ -160,7 +170,7 @@
     </transition>
 
     <transition name="slide-fade">
-      <v-col v-show="dolarBitcoin" cols="12" lg="4" md="4" sm="6">
+      <v-col v-show="DolarBitcoin.status" cols="12" lg="4" md="4" sm="6">
         <v-card>
           <v-card-title class="justify-center secondaryBack py-2 currency-name">
             <v-icon size="20" class="mr-1" color="yellow">mdi-bitcoin</v-icon>
@@ -191,37 +201,6 @@
       </v-col>
     </transition>
 
-    <transition name="slide-fade">
-      <v-col v-show="dolarSoja" cols="12" lg="3" md="3" sm="6">
-        <v-card>
-          <v-card-title class="justify-center text-uppercase dolar-soja py-2">{{
-            currencies[2].casa.nombre
-          }}</v-card-title>
-          <v-card-text class="d-flex align-center pa-2">
-            <v-row>
-              <v-col
-                v-if="currencies[2].casa.compra != 'No Cotiza'"
-                class="text-center"
-              >
-                <h4>Compra</h4>
-                <h4 class="currencyValue">{{ currencies[2].casa.compra }}</h4>
-              </v-col>
-              <v-col class="text-center pa-1">
-                <h4>Venta</h4>
-                <h4 class="currencyValue">$ {{ currencies[2].casa.venta }}</h4>
-              </v-col>
-            </v-row>
-          </v-card-text>
-          <div class="variationFooter pa-2 px-4 d-flex">
-            <variationText
-              :variationText="currencies[2].casa.variacion"
-            ></variationText>
-            <v-spacer></v-spacer>
-            <v-btn x-small class="elevation-1" color="primary">Calcular</v-btn>
-          </div>
-        </v-card>
-      </v-col>
-    </transition>
   </v-row>
 </template>
 
@@ -242,19 +221,17 @@ export default {
     fetch("https://www.dolarsi.com/api/api.php?type=valoresprincipales")
       .then(response => response.json())
       .then(data => {
-        console.log(data);
         this.currencies = data;
       });
   },
   computed: {
     ...mapState([
-      "dolarOficial",
-      "dolarBlue",
-      "dolarTurista",
-      "dolarBolsa",
-      "dolarLiqui",
-      "dolarSoja",
-      "dolarBitcoin",
+      "DolarOficial",
+      "DolarBlue",
+      "DolarTurista",
+      "DolarBolsa",
+      "DolarLiqui",
+      "DolarBitcoin",
       "calculatedItem"
     ]),
     mobile() {

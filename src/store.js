@@ -13,13 +13,30 @@ export default new Vuex.Store({
     chartData: {
       data: [],
     },
-    dolarOficial: true,
-    dolarBlue: true,
-    dolarTurista: true,
-    dolarBolsa: true,
-    dolarBitcoin: false,
-    dolarSoja: false,
-    dolarLiqui: false,
+    DolarOficial: {
+      status: true,
+      required: true
+    },
+    DolarBlue: {
+      status: true,
+      required: true
+    },
+    DolarTurista: {
+      status: false,
+      required: false
+    },
+    DolarBolsa: {
+      status: false,
+      required: false
+    },
+    DolarLiqui: {
+      status: true,
+      required: false
+    },
+    DolarBitcoin: {
+      status: false,
+      required: false
+    },
     calculatedItem: {
       name: "oficial",
       buy: 0,
@@ -50,6 +67,9 @@ export default new Vuex.Store({
     },
     UPDATE_DOLAR_BOLSA({commit}, payload){
       commit("DOLAR_BOLSA", payload)
+    },
+    UPDATE_DASHBOARD_ITEM({commit}, payload){
+      commit("DASHBOARD_ITEM", payload)
     }
   },
   mutations: {
@@ -90,8 +110,9 @@ export default new Vuex.Store({
         JSON.stringify(state.currencies)
       );
     },
-    DOLAR_BOLSA(state, payload){
-      state.dolarBolsa = payload
+    DASHBOARD_ITEM(state, payload){
+      console.log(payload.name.replace(/\s/g, ''), payload.status)
+      state[payload.name.replace(/\s/g, '')].status = payload.status
     }
   },
 });
